@@ -1,0 +1,5 @@
+.vagrant
+vendor/
+build/
+var
+.DS_Store

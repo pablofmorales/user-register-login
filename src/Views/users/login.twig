@@ -1,0 +1,25 @@
+{% include 'header.twig' %}
+   <h2>Sign up</h2>
+
+  {% if errors is defined %}
+    {% for error in errors  %}
+    <p class="bg-danger">{{ error }}</p>
+    {% endfor %}
+  {% endif %}
+
+  {% if success is defined %}
+    <p class="bg-success">You are logged into the system</p>
+  {% else %}
+   <form method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="{{ email is defined ? email : ''  }}">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Password" value="{{ password is defined ? password : ''  }}">
+      </div>
+      <button type="submit" class="btn btn-default">Login</button>
+    </form>
+  {% endif %}
+{% include 'header.twig' %}

@@ -1,0 +1,26 @@
+web:
+  image: php:5.6-apache
+  container_name: usertest_webserver
+  entrypoint: bin/startDocker.sh
+  ports:
+    - "8000:80"
+  volumes:
+    - ./:/var/www/html
+    - ./var/log:/var/log/apache2
+    - ./usertest.conf:/etc/apache2/sites-enabled/usertest.conf
+  links:
+    - mysql:db-main
+
+mysql:
+ image: mysql:5.6.27
+ container_name: usertest_version_db
+ ports:
+   - "3306:3306"
+ volumes:
+   - /mnt/sdb/var/lib/mysql
+
+ environment:
+   - MYSQL_DATABASE=usertest
+   - MYSQL_USER=usertest
+   - MYSQL_PASSWORD=qwerty
+   - MYSQL_ALLOW_EMPTY_PASSWORD=yes

@@ -1,0 +1,19 @@
+{% include 'header.twig' %}
+   <h2>User listing</h2>
+   <form method="get">
+      <div class="form-group">
+        <label for="q">Name</label>
+        <input type="text" name="q" class="form-control" id="q" placeholder="Jame Smidth / jame@gmail.com" value="{{ q is defined ? q : '' }}">
+      </div>
+      <button type="submit" class="btn btn-default">Search</button>
+    </form>
+    <br/><hr/>
+
+    {% if users is defined %}
+    <table class="table table-striped">
+        {% for u in users %}
+            <tr><td>{{ u.name }}</td><td>{{ u.email }}</td><td>{{ u.created }}</td></tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+{% include 'header.twig' %}
